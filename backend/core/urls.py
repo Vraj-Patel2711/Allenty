@@ -13,7 +13,3 @@ urlpatterns = [
     path('api/products/', product_list, name='product_list'),
     path('api/products/<int:pk>/', product_detail, name='product_detail'),
 ]
-from django.contrib.auth import get_user_model
-User = get_user_model()
-if not User.objects.filter(username='admin').exists():
-    User.objects.create_superuser('admin', 'admin@example.com', 'yourpassword123')
