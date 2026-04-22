@@ -13,3 +13,7 @@ urlpatterns = [
     path('api/products/', product_list, name='product_list'),
     path('api/products/<int:pk>/', product_detail, name='product_detail'),
 ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://allenty-web.vercel.app/",
+]
