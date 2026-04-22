@@ -64,14 +64,10 @@ if IS_RENDER:
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'allenty_db',          
-            'USER': 'allenty_user',        
-            'PASSWORD': 'securepassword123', 
-            'HOST': 'db',
-            'PORT': '5432',
-        }
+        'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
     }
 
 AUTH_PASSWORD_VALIDATORS = []
