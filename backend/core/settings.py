@@ -11,7 +11,6 @@ IS_RENDER = 'RENDER' in os.environ
 SECRET_KEY = 'django-insecure-test-key'
 DEBUG = not IS_RENDER
 
-# We keep '*' here so your React Native Expo app can still connect locally via your local network IP
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -30,7 +29,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Added WhiteNoise for production static files
+    'whitenoise.middleware.WhiteNoiseMiddleware',  
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -59,7 +58,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-# Dynamic Database configuration based on the environment
 if IS_RENDER:
     DATABASES = {
         'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'), conn_max_age=600)
@@ -83,7 +81,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Required by Render/Whitenoise
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
